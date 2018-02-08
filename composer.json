@@ -1,0 +1,14 @@
+{
+    "name": "mcred/feed-me-now",
+    "description": "Client Library for feedmenow.io APIs",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Derek Smart",
+            "email": "derek@grindaga.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

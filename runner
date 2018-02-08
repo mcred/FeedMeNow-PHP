@@ -1,0 +1,51 @@
+#!/usr/bin/env php
+<?php
+/**
+ * This file is the the main CLI runner for TM API.
+ *
+ * @copyright   Derek Smart <derek@grindaga.com>
+ * @author      Derek Smart <derek@grindaga.com>
+ * @license     MIT
+ */
+
+$minimunVersion = '7.1.0';
+if (version_compare($minimunVersion, PHP_VERSION, '>')) {
+    echo 'TM API requires a minimum PHP version of 7.1' . PHP_EOL;
+    die(1);
+}
+
+$autoload = [
+    __DIR__ . '/bootstrap.php',
+    __DIR__ . '/dependencies.php'
+];
+
+foreach ($autoload as $file) {
+    if (file_exists($file)) {
+        require $file;
+    }
+}
+
+if (!array_key_exists(1, $argv)) {
+    throw new Exception("Runner Class is Required");
+}
+if (!array_key_exists(2, $argv)) {
+    throw new Exception("Runner Method is Required");
+}
+
+$allowedClasses = [
+    'DepositHandler'
+];
+$allowedMethods = [
+    'batchDeposit'
+];
+
+if (!in_array($argv[1], $allowedClasses)) {
+    throw new Exception($argv[1] . ' is not a runnable class.');
+}
+if (!in_array($argv[2], $allowedMethods)) {
+    throw new Exception($argv[2] . ' is not a runnable method.');
+}
+
+$c[$argv[1]]->{$argv[2]}();
+
+exit(0);
