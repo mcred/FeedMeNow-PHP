@@ -10,11 +10,10 @@ class GetResponse
         $this->data = $data;
     }
 
-    public function create(array $data)
+    public static function create(array $data)
     {
         $return = [];
         foreach ($data['results'] as $item) {
-            var_dump($item);
             $return[] = Provider::create($item);
         }
         return new self($return);
