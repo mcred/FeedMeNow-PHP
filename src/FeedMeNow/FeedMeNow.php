@@ -12,7 +12,7 @@ class FeedMeNow
         Hydrator $hydrator = null,
         RequestBuilder $requestBuilder = null
     ) {
-        $this->httpClient = HttpClientDiscovery::find();
+        $this->httpClient = $httpClient ?: HttpClientDiscovery::find();
         $this->requestBuilder = $requestBuilder ?: new RequestBuilder();
         $this->hydrator = $hydrator ?: new Hydrator();
     }
