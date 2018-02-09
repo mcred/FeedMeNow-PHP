@@ -1,5 +1,5 @@
 {
-    "name": "mcred/feed-me-now",
+    "name": "mcred/feed-me-now-api",
     "description": "Client Library for feedmenow.io APIs",
     "type": "library",
     "license": "MIT",
@@ -10,5 +10,33 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "php": "^5.5|^7.0",
+        "php-http/httplug": "^1.0",
+        "php-http/multipart-stream-builder": "^1.0",
+        "php-http/message": "^1.0",
+        "php-http/client-common": "^1.1",
+        "php-http/discovery": "^1.0",
+        "webmozart/assert": "^1.2"
+    },
+    "require-dev": {
+        "theseer/autoload": "^1.24",
+        "phpunit/phpunit": "^7.0",
+        "php-http/guzzle6-adapter": "^1.0",
+        "guzzlehttp/psr7": "^1.4"
+    },
+    "autoload": {
+        "psr-0": {
+            "FeedMeNow": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FeedMeNow\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --testsuite all --coverage-text --coverage-clover=build/coverage.xml"
+    }
 }
