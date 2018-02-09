@@ -2,7 +2,6 @@
 namespace FeedMeNow;
 
 use Http\Discovery\MessageFactoryDiscovery;
-use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Http\Message\RequestFactory;
 use Psr\Http\Message\RequestInterface;
 
