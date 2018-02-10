@@ -1,5 +1,5 @@
 <?php
-namespace FeedMeNow\Tests\Model;
+namespace FeedMeNow\Tests\Model\Provider;
 
 use FeedMeNow\Model\Provider\GetResponse;
 

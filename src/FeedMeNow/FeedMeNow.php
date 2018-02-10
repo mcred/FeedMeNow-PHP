@@ -21,4 +21,9 @@ class FeedMeNow
     {
         return new Api\Provider($this->httpClient, $this->requestBuilder, $this->hydrator);
     }
+
+    public function search()
+    {
+        return new Api\Search($this->httpClient, $this->requestBuilder, $this->hydrator);
+    }
 }

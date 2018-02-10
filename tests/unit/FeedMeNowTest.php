@@ -38,4 +38,9 @@ class FeedMeNowTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertInstanceOf('FeedMeNow\Api\Provider', $this->feedMeNow->providers());
     }
+
+    public function testCanGetSearches()
+    {
+        $this->assertInstanceOf('FeedMeNow\Api\Search', $this->feedMeNow->search());
+    }
 }
