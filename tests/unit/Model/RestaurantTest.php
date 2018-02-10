@@ -54,6 +54,7 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Restaurant::class, $actual);
     }
 
+
     public function testCanGetId()
     {
         $this->assertEquals('name-1', $this->restaurant->getId());
@@ -64,14 +65,24 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('name1', $this->restaurant->getName());
     }
 
-    public function testCanGetPrice()
+    public function testCanGetImageUrl()
     {
-        $this->assertEquals('$$', $this->restaurant->getPrice());
+        $this->assertEquals('imageUrl1', $this->restaurant->getImageUrl());
     }
 
-    public function testCanGetRating()
+    public function testCanGetIsClaimed()
     {
-        $this->assertEquals(4.5, $this->restaurant->getRating());
+        $this->assertTrue($this->restaurant->getIsClaimed());
+    }
+
+    public function testCanGetIsClosed()
+    {
+        $this->assertFalse($this->restaurant->getIsClosed());
+    }
+
+    public function testCanGetUrl()
+    {
+        $this->assertEquals('Url1', $this->restaurant->getUrl());
     }
 
     public function testCanGetPhone()
@@ -79,8 +90,58 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('Phone1', $this->restaurant->getPhone());
     }
 
-    public function testCanGetUrl()
+    public function testCanGetDisplayPhone()
     {
-        $this->assertEquals('Url1', $this->restaurant->getUrl());
+        $this->assertEquals('displayPhone1', $this->restaurant->getDisplayPhone());
+    }
+
+    public function testCanGetReviewCount()
+    {
+        $this->assertEquals(11, $this->restaurant->getReviewCount());
+    }
+
+    public function testCanGetPrice()
+    {
+        $this->assertEquals('$$', $this->restaurant->getPrice());
+    }
+
+    public function testCanGetSalesTax()
+    {
+        $this->assertEquals('0.079', $this->restaurant->getSalesTax());
+    }
+
+    public function testCanGetCategories()
+    {
+        $this->assertEquals([], $this->restaurant->getCategories());
+    }
+
+    public function testCanGetRating()
+    {
+        $this->assertEquals('4.5', $this->restaurant->getRating());
+    }
+
+    public function testCanGetCoordinates()
+    {
+        $this->assertEquals([], $this->restaurant->getCoordinates());
+    }
+
+    public function testCanGetPhotos()
+    {
+        $this->assertEquals([], $this->restaurant->getPhotos());
+    }
+
+    public function testCanGetHours()
+    {
+        $this->assertEquals([], $this->restaurant->getHours());
+    }
+
+    public function testCanGetTransactions()
+    {
+        $this->assertEquals([], $this->restaurant->getTransactions());
+    }
+
+    public function testCanGetProviders()
+    {
+        $this->assertEquals([], $this->restaurant->getProviders());
     }
 }
