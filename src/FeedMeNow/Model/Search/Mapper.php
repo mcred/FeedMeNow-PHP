@@ -1,7 +1,7 @@
 <?php
 namespace FeedMeNow\Model\Search;
 
-class GetResponse
+class Mapper
 {
     private $data;
 

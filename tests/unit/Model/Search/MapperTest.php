@@ -1,15 +1,15 @@
 <?php
 namespace FeedMeNow\Tests\Model\Search;
 
-use FeedMeNow\Model\Search\GetResponse;
+use FeedMeNow\Model\Search\Mapper;
 
 /**
-* @covers FeedMeNow\Model\Search\GetResponse
+* @covers FeedMeNow\Model\Search\Mapper
 * @covers FeedMeNow\Model\Search\Search
 */
-class GetResponseTest extends \PHPUnit\Framework\TestCase
+class MapperTest extends \PHPUnit\Framework\TestCase
 {
-    private $getResponse;
+    private $mapper;
     private $testData;
 
     public function setup()
@@ -22,18 +22,18 @@ class GetResponseTest extends \PHPUnit\Framework\TestCase
                 'name' => 'name2'
             ],
         ];
-        $this->getResponse = new GetResponse($this->testData);
+        $this->mapper = new Mapper($this->testData);
     }
 
     public function testCanInstantiate()
     {
-        $this->assertInstanceOf(GetResponse::class, $this->getResponse);
+        $this->assertInstanceOf(Mapper::class, $this->mapper);
     }
 
     public function testCanGetData()
     {
-        $getResponse = GetResponse::create($this->testData);
-        $actual = $getResponse->getData();
+        $mapper = Mapper::create($this->testData);
+        $actual = $mapper->getData();
         $this->assertEquals(2, count($actual));
         $this->assertInstanceOf('FeedMeNow\Model\Search\Search', $actual[0]);
     }
