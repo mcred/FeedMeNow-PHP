@@ -27,3 +27,6 @@ foreach($providers as $provider)
 $feedMeNow->providers()->get("Atlanta,GA");
 $feedMeNow->search()->get("Pizza", "Atlanta,GA");
 ```
+
+### Acknowledgements
+I wanted to build a library with PSR-7 HTTP Message Interfaces and took a lot of inspiration from the [Mailgun PHP Client](https://github.com/mailgun/mailgun-php). They did a great job building a SDK and you should check it out if you want to see some really great code. 
