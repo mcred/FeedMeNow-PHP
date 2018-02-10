@@ -5,6 +5,7 @@ use FeedMeNow\Model\Provider\GetResponse;
 
 /**
 * @covers FeedMeNow\Model\Provider\GetResponse
+* @covers FeedMeNow\Model\Provider\Provider
 */
 class GetResponseTest extends \PHPUnit\Framework\TestCase
 {

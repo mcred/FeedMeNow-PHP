@@ -10,6 +10,8 @@ composer require mcred/feed-me-now-api
 
 ### Example Usage
 ```php
+require "./vendor/autoload.php";
+
 $feedMeNow = new FeedMeNow\FeedMeNow();
 $response = $feedMeNow->providers()->get("Atlanta, GA");
 $providers = $response->getData();
