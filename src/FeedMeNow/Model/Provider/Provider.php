@@ -22,10 +22,13 @@ class Provider
 
     public static function create(array $data)
     {
+        if (!array_key_exists('price', $data)) {
+            $data['price'] = '';
+        }
         return new self(
             $data['id'],
             $data['name'],
-            $data['price'] ?: '',
+            $data['price'],
             $data['rating'],
             $data['phone'],
             $data['url']

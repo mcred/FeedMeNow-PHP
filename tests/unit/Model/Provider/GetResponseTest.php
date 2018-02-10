@@ -25,7 +25,6 @@ class GetResponseTest extends \PHPUnit\Framework\TestCase
             [
                 'id' => 2,
                 'name' => 'name2',
-                'price' => '$',
                 'rating' => 'rating2',
                 'phone' => 'phone2',
                 'url' => 'url2'
