@@ -31,7 +31,7 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
 
         $response = $this->prophet->prophesize("GuzzleHttp\Psr7\Response");
         $stream = $this->prophet->prophesize("GuzzleHttp\Psr7\Stream");
-        $jsonString = '{"missingProviders":[],"results":[{"id":"id","name":"name","price":"price","rating":"rating","phone":"phone","url":"url"},{"id":"id","name":"name","price":"price","rating":"rating","phone":"phone","url":"url"}]}';
+        $jsonString = '{"missingProviders":[],"results":[{"id":"name-1","name":"name1","image_url":"imageUrl1","is_claimed":true,"is_closed":false,"url":"Url1","phone":"Phone1","display_phone":"displayPhone1","review_count":11,"price":"$$","salesTax":".07","rating":5},{"id":"name-1","name":"name1","image_url":"imageUrl1","is_claimed":true,"is_closed":false,"url":"Url1","phone":"Phone1","display_phone":"displayPhone1","review_count":11,"price":"$$","salesTax":".07","rating":5}]}';
         $stream->__toString()->willReturn($jsonString);
         $response->getBody()->willReturn($stream->reveal());
         $this->httpClient->sendRequest(Argument::any())->willReturn($response->reveal());
@@ -48,6 +48,6 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
     {
         $address = "Atlanta, GA";
         $response = $this->provider->get($address);
-        $this->assertInstanceOf("FeedMeNow\Model\Provider\GetResponse", $response);
+        $this->assertInstanceOf("FeedMeNow\Model\Provider\Mapper", $response);
     }
 }

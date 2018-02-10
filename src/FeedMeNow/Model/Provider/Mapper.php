@@ -1,7 +1,9 @@
 <?php
 namespace FeedMeNow\Model\Provider;
 
-class GetResponse
+use FeedMeNow\Model\Restaurant;
+
+class Mapper
 {
     private $data;
 
@@ -14,7 +16,7 @@ class GetResponse
     {
         $return = [];
         foreach ($data['results'] as $item) {
-            $return[] = Provider::create($item);
+            $return[] = Restaurant::create($item);
         }
         return new self($return);
     }
