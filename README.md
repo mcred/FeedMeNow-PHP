@@ -25,4 +25,5 @@ foreach($providers as $provider)
 ### Available Methods
 ```php
 $feedMeNow->providers()->get("Atlanta,GA");
+$feedMeNow->search()->get("Pizza", "Atlanta,GA");
 ```
