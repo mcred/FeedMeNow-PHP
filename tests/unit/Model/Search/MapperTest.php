@@ -5,7 +5,7 @@ use FeedMeNow\Model\Search\Mapper;
 
 /**
 * @covers FeedMeNow\Model\Search\Mapper
-* @covers FeedMeNow\Model\Search\Search
+* @covers FeedMeNow\Model\Search
 */
 class MapperTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,6 +35,6 @@ class MapperTest extends \PHPUnit\Framework\TestCase
         $mapper = Mapper::create($this->testData);
         $actual = $mapper->getData();
         $this->assertEquals(2, count($actual));
-        $this->assertInstanceOf('FeedMeNow\Model\Search\Search', $actual[0]);
+        $this->assertInstanceOf('FeedMeNow\Model\Search', $actual[0]);
     }
 }

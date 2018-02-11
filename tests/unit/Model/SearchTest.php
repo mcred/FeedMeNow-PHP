@@ -1,10 +1,10 @@
 <?php
 namespace FeedMeNow\Tests\Model;
 
-use FeedMeNow\Model\Search\Search;
+use FeedMeNow\Model\Search;
 
 /**
-* @covers FeedMeNow\Model\Search\Search
+* @covers FeedMeNow\Model\Search
 */
 class SearchTest extends \PHPUnit\Framework\TestCase
 {

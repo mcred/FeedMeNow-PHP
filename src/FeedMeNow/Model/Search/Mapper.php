@@ -1,6 +1,8 @@
 <?php
 namespace FeedMeNow\Model\Search;
 
+use FeedMeNow\Model\Search;
+
 class Mapper
 {
     private $data;

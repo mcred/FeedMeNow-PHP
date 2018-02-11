@@ -1,5 +1,5 @@
 <?php
-namespace FeedMeNow\Model\Search;
+namespace FeedMeNow\Model;
 
 class Search
 {
