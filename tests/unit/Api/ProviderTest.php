@@ -48,6 +48,6 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
     {
         $address = "Atlanta, GA";
         $response = $this->provider->get($address);
-        $this->assertInstanceOf("FeedMeNow\Model\Provider\Mapper", $response);
+        $this->assertInstanceOf("FeedMeNow\Mapper\ProviderMapper", $response);
     }
 }

@@ -1,13 +1,13 @@
 <?php
-namespace FeedMeNow\Tests\Model\Search;
+namespace FeedMeNow\Tests\Mapper\Search;
 
-use FeedMeNow\Model\Search\Mapper;
+use FeedMeNow\Mapper\SearchMapper;
 
 /**
-* @covers FeedMeNow\Model\Search\Mapper
+* @covers FeedMeNow\Mapper\SearchMapper
 * @covers FeedMeNow\Model\Search
 */
-class MapperTest extends \PHPUnit\Framework\TestCase
+class SearchMapperTest extends \PHPUnit\Framework\TestCase
 {
     private $mapper;
     private $testData;
@@ -22,17 +22,17 @@ class MapperTest extends \PHPUnit\Framework\TestCase
                 'name' => 'name2'
             ],
         ];
-        $this->mapper = new Mapper($this->testData);
+        $this->mapper = new SearchMapper($this->testData);
     }
 
     public function testCanInstantiate()
     {
-        $this->assertInstanceOf(Mapper::class, $this->mapper);
+        $this->assertInstanceOf(SearchMapper::class, $this->mapper);
     }
 
     public function testCanGetData()
     {
-        $mapper = Mapper::create($this->testData);
+        $mapper = SearchMapper::create($this->testData);
         $actual = $mapper->getData();
         $this->assertEquals(2, count($actual));
         $this->assertInstanceOf('FeedMeNow\Model\Search', $actual[0]);

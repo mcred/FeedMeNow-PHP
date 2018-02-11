@@ -2,7 +2,7 @@
 namespace FeedMeNow\Api;
 
 use Webmozart\Assert\Assert;
-use FeedMeNow\Model\Provider\Mapper;
+use FeedMeNow\Mapper\ProviderMapper;
 use Psr\Http\Message\ResponseInterface;
 
 class Provider extends HttpApi
@@ -14,6 +14,6 @@ class Provider extends HttpApi
             'address' => $address
         ];
         $response = $this->httpGet('providers', $params);
-        return $this->hydrateResponse($response, Mapper::class);
+        return $this->hydrateResponse($response, ProviderMapper::class);
     }
 }

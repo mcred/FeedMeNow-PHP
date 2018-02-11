@@ -48,6 +48,6 @@ class SearchTest extends \PHPUnit\Framework\TestCase
     {
         $address = "Atlanta, GA";
         $response = $this->search->get("term", $address);
-        $this->assertInstanceOf("FeedMeNow\Model\Search\Mapper", $response);
+        $this->assertInstanceOf("FeedMeNow\Mapper\SearchMapper", $response);
     }
 }

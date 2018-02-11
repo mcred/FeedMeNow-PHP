@@ -1,13 +1,13 @@
 <?php
-namespace FeedMeNow\Tests\Model\Provider;
+namespace FeedMeNow\Tests\Mapper\Provider;
 
-use FeedMeNow\Model\Provider\Mapper;
+use FeedMeNow\Mapper\ProviderMapper;
 
 /**
-* @covers FeedMeNow\Model\Provider\Mapper
+* @covers FeedMeNow\Mapper\ProviderMapper
 * @covers FeedMeNow\Model\Restaurant
 */
-class MapperTest extends \PHPUnit\Framework\TestCase
+class ProviderMapperTest extends \PHPUnit\Framework\TestCase
 {
     private $mapper;
     private $testData;
@@ -43,23 +43,23 @@ class MapperTest extends \PHPUnit\Framework\TestCase
                 'rating' => 4.5
             ],
         ]];
-        $this->mapper = new Mapper($this->testData);
+        $this->mapper = new ProviderMapper($this->testData);
     }
 
     public function testCanInstantiate()
     {
-        $this->assertInstanceOf(Mapper::class, $this->mapper);
+        $this->assertInstanceOf(ProviderMapper::class, $this->mapper);
     }
 
     public function testCanCreate()
     {
-        $actual = Mapper::create($this->testData);
-        $this->assertInstanceOf(Mapper::class, $actual);
+        $actual = ProviderMapper::create($this->testData);
+        $this->assertInstanceOf(ProviderMapper::class, $actual);
     }
 
     public function testCanGetData()
     {
-        $mapper = Mapper::create($this->testData);
+        $mapper = ProviderMapper::create($this->testData);
         $actual = $mapper->getData();
         $this->assertEquals(2, count($actual));
         $this->assertInstanceOf('FeedMeNow\Model\Restaurant', $actual[0]);

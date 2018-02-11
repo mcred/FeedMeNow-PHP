@@ -1,9 +1,9 @@
 <?php
-namespace FeedMeNow\Model\Provider;
+namespace FeedMeNow\Mapper;
 
 use FeedMeNow\Model\Restaurant;
 
-class Mapper
+class ProviderMapper
 {
     private $data;
 
