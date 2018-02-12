@@ -14,62 +14,10 @@ class ProviderMapperTest extends \PHPUnit\Framework\TestCase
 
     public function setup()
     {
+        $restaurantMock = new \FeedMeNow\Mock\Restaurant;
         $this->testData = ['results' => [
-            [
-                'id' => 'name-1',
-                'name' => 'name1',
-                'image_url' => 'imageUrl1',
-                'is_claimed' => true,
-                'is_closed' => false,
-                'url' => 'Url1',
-                'phone' => 'Phone1',
-                'display_phone' => 'displayPhone1',
-                'review_count' => 11,
-                'price' => '$$',
-                'salesTax' => 0.079,
-                'rating' => 4.5,
-                'coordinates' => [
-                    'latitude' => '33.77719',
-                    'longitude' => '-84.38912'
-                ],
-                'categories' => [
-                    [
-                        'alias' => 'japanese',
-                        'title' => 'Japanese'
-                    ],
-                    [
-                        'alias' => 'korean',
-                        'title' => 'Korean'
-                    ]
-                ]
-            ],
-            [
-                'id' => 'name-2',
-                'name' => 'name2',
-                'image_url' => 'imageUrl2',
-                'is_claimed' => true,
-                'is_closed' => false,
-                'url' => 'Url2',
-                'phone' => 'Phone2',
-                'display_phone' => 'displayPhone2',
-                'review_count' => 11,
-                'salesTax' => 0.079,
-                'rating' => 4.5,
-                'coordinates' => [
-                    'latitude' => '33.77719',
-                    'longitude' => '-84.38912'
-                ],
-                'categories' => [
-                    [
-                        'alias' => 'japanese',
-                        'title' => 'Japanese'
-                    ],
-                    [
-                        'alias' => 'korean',
-                        'title' => 'Korean'
-                    ]
-                ]
-            ],
+            $restaurantMock->testRestaurant,
+            $restaurantMock->testRestaurant
         ]];
         $this->mapper = new ProviderMapper($this->testData);
     }

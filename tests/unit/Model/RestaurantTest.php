@@ -13,34 +13,8 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
 
     public function setup()
     {
-        $this->testRestaurant = [
-            'id' => 'name-1',
-            'name' => 'name1',
-            'image_url' => 'imageUrl1',
-            'is_claimed' => true,
-            'is_closed' => false,
-            'url' => 'Url1',
-            'phone' => 'Phone1',
-            'display_phone' => 'displayPhone1',
-            'review_count' => 11,
-            'price' => '$$',
-            'salesTax' => 0.079,
-            'rating' => 4.5,
-            'coordinates' => [
-                'latitude' => '33.77719',
-                'longitude' => '-84.38912'
-            ],
-            'categories' => [
-                [
-                    'alias' => 'japanese',
-                    'title' => 'Japanese'
-                ],
-                [
-                    'alias' => 'korean',
-                    'title' => 'Korean'
-                ]
-            ]
-        ];
+        $restaurantMock = new \FeedMeNow\Mock\Restaurant;
+        $this->testRestaurant = $restaurantMock->testRestaurant;
         $this->restaurant = new Restaurant(
             $this->testRestaurant['id'],
             $this->testRestaurant['name'],
@@ -56,7 +30,10 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
             $this->testRestaurant['rating'],
             $this->testRestaurant['coordinates']['latitude'],
             $this->testRestaurant['coordinates']['longitude'],
-            $this->testRestaurant['categories']
+            $this->testRestaurant['categories'],
+            $this->testRestaurant['photos'],
+            $this->testRestaurant['hours'],
+            $this->testRestaurant['providers']
         );
     }
 
@@ -67,6 +44,7 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
 
     public function testCanCreate()
     {
+        unset($this->testRestaurant['price']);
         $actual = Restaurant::create($this->testRestaurant);
         $this->assertInstanceOf(Restaurant::class, $actual);
     }
@@ -150,16 +128,19 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
 
     public function testCanGetPhotos()
     {
-        $this->assertEquals([], $this->restaurant->getPhotos());
+        $actual = $this->restaurant->getPhotos();
+        $this->assertEquals('https://s3-media1.fl.yelpcdn.com/bphoto/SpaGdVA-QwFCRmc7v_cjTg/o.jpg', $actual[0]);
     }
 
     public function testCanGetHours()
     {
-        $this->assertEquals([], $this->restaurant->getHours());
+        $actual = $this->restaurant->getHours();
+        $this->assertInstanceOf('FeedMeNow\Model\Hour', $actual[0]);
     }
 
     public function testCanGetProviders()
     {
-        $this->assertEquals([], $this->restaurant->getProviders());
+        $actual = $this->restaurant->getProviders();
+        $this->assertInstanceOf('FeedMeNow\Model\Provider', $actual[0]);
     }
 }

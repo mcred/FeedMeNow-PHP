@@ -2,6 +2,9 @@
 namespace FeedMeNow\Model;
 
 use FeedMeNow\Model\Category;
+use FeedMeNow\Model\Location;
+use FeedMeNow\Model\Provider;
+use FeedMeNow\Model\Hour;
 
 class Restaurant
 {
@@ -19,7 +22,7 @@ class Restaurant
     private $rating;
     private $latitude;
     private $longitude;
-    private $categories;
+    private $categories = [];
     private $photos = [];
     private $hours = [];
     private $providers = [];
@@ -39,8 +42,7 @@ class Restaurant
         $rating,
         $latitude,
         $longitude,
-        $categories,
-        $coordinates = [],
+        $categories = [],
         $photos = [],
         $hours = [],
         $providers = []
@@ -61,8 +63,8 @@ class Restaurant
         $this->longitude = $longitude;
         $this->categories = $this->setCategories($categories);
         $this->photos = $photos;
-        $this->hours = $hours;
-        $this->providers = $providers;
+        $this->hours = $this->setHours($hours);
+        $this->providers = $this->setProviders($providers);
     }
 
     public static function create(array $data)
@@ -85,7 +87,10 @@ class Restaurant
             $data['rating'],
             $data['coordinates']['latitude'],
             $data['coordinates']['longitude'],
-            $data['categories']
+            $data['categories'],
+            $data['photos'],
+            $data['hours'],
+            $data['providers']
         );
     }
 
@@ -94,6 +99,24 @@ class Restaurant
         $return = [];
         foreach ($categories as $category) {
             $return[] = Category::create($category);
+        }
+        return $return;
+    }
+
+    private function setProviders(array $providers)
+    {
+        $return = [];
+        foreach ($providers as $provider) {
+            $return[] = Provider::create($provider);
+        }
+        return $return;
+    }
+
+    private function setHours(array $hours)
+    {
+        $return = [];
+        foreach ($hours['open'] as $hour) {
+            $return[] = Hour::create($hour);
         }
         return $return;
     }

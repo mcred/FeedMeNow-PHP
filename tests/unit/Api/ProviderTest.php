@@ -31,7 +31,8 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
 
         $response = $this->prophet->prophesize("GuzzleHttp\Psr7\Response");
         $stream = $this->prophet->prophesize("GuzzleHttp\Psr7\Stream");
-        $jsonString = '{"missingProviders":[],"results":[{"id":"name-1","categories":[{"alias":"desserts","title":"Desserts"},{"alias":"bakeries","title":"Bakeries"},{"alias":"cupcakes","title":"Cupcakes"}],"name":"name1","image_url":"imageUrl1","is_claimed":true,"is_closed":false,"url":"Url1","phone":"Phone1","display_phone":"displayPhone1","review_count":11,"price":"$$","salesTax":".07","rating":5,"coordinates":{"latitude":33.608080487913,"longitude":-84.446454116315}},{"id":"name-1","name":"name1","image_url":"imageUrl1","is_claimed":true,"is_closed":false,"url":"Url1","phone":"Phone1","categories":[{"alias":"desserts","title":"Desserts"},{"alias":"bakeries","title":"Bakeries"},{"alias":"cupcakes","title":"Cupcakes"}],"display_phone":"displayPhone1","review_count":11,"price":"$$","salesTax":".07","rating":5,"coordinates":{"latitude":33.608080487913,"longitude":-84.446454116315}}]}';
+        $restaurantMock = new \FeedMeNow\Mock\Restaurant;
+        $jsonString = '{"missingProviders":[],"results":['.json_encode($restaurantMock->testRestaurant).','.json_encode($restaurantMock->testRestaurant).']}';
         $stream->__toString()->willReturn($jsonString);
         $response->getBody()->willReturn($stream->reveal());
         $this->httpClient->sendRequest(Argument::any())->willReturn($response->reveal());
