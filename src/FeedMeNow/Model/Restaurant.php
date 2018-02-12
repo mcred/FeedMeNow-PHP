@@ -63,7 +63,7 @@ class Restaurant
         $this->longitude = $longitude;
         $this->categories = $this->setCategories($categories);
         $this->photos = $photos;
-        $this->hours = $this->setHours($hours);
+        $this->hours = (is_array($hours) ? $this->setHours($hours) : []);
         $this->providers = $this->setProviders($providers);
     }
 
