@@ -20,7 +20,6 @@ class Restaurant
     private $categories = [];
     private $photos = [];
     private $hours = [];
-    private $transactions = [];
     private $providers = [];
 
     public function __construct(
@@ -42,7 +41,6 @@ class Restaurant
         $coordinates = [],
         $photos = [],
         $hours = [],
-        $transactions = [],
         $providers = []
     ) {
         $this->id = $id;
@@ -62,7 +60,6 @@ class Restaurant
         $this->categories = $categories;
         $this->photos = $photos;
         $this->hours = $hours;
-        $this->transactions = $transactions;
         $this->providers = $providers;
     }
 
@@ -172,11 +169,6 @@ class Restaurant
     public function getHours()
     {
         return $this->hours;
-    }
-
-    public function getTransactions()
-    {
-        return $this->transactions;
     }
 
     public function getProviders()

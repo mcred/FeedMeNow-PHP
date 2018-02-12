@@ -146,11 +146,6 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([], $this->restaurant->getHours());
     }
 
-    public function testCanGetTransactions()
-    {
-        $this->assertEquals([], $this->restaurant->getTransactions());
-    }
-
     public function testCanGetProviders()
     {
         $this->assertEquals([], $this->restaurant->getProviders());
