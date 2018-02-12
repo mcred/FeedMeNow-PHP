@@ -31,6 +31,16 @@ class ProviderMapperTest extends \PHPUnit\Framework\TestCase
                 'coordinates' => [
                     'latitude' => '33.77719',
                     'longitude' => '-84.38912'
+                ],
+                'categories' => [
+                    [
+                        'alias' => 'japanese',
+                        'title' => 'Japanese'
+                    ],
+                    [
+                        'alias' => 'korean',
+                        'title' => 'Korean'
+                    ]
                 ]
             ],
             [
@@ -48,6 +58,16 @@ class ProviderMapperTest extends \PHPUnit\Framework\TestCase
                 'coordinates' => [
                     'latitude' => '33.77719',
                     'longitude' => '-84.38912'
+                ],
+                'categories' => [
+                    [
+                        'alias' => 'japanese',
+                        'title' => 'Japanese'
+                    ],
+                    [
+                        'alias' => 'korean',
+                        'title' => 'Korean'
+                    ]
                 ]
             ],
         ]];

@@ -29,6 +29,16 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
             'coordinates' => [
                 'latitude' => '33.77719',
                 'longitude' => '-84.38912'
+            ],
+            'categories' => [
+                [
+                    'alias' => 'japanese',
+                    'title' => 'Japanese'
+                ],
+                [
+                    'alias' => 'korean',
+                    'title' => 'Korean'
+                ]
             ]
         ];
         $this->restaurant = new Restaurant(
@@ -45,7 +55,8 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
             $this->testRestaurant['salesTax'],
             $this->testRestaurant['rating'],
             $this->testRestaurant['coordinates']['latitude'],
-            $this->testRestaurant['coordinates']['longitude']
+            $this->testRestaurant['coordinates']['longitude'],
+            $this->testRestaurant['categories']
         );
     }
 
@@ -118,7 +129,8 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
 
     public function testCanGetCategories()
     {
-        $this->assertEquals([], $this->restaurant->getCategories());
+        $actual = $this->restaurant->getCategories();
+        $this->assertInstanceOf('FeedMeNow\Model\Category', $actual[0]);
     }
 
     public function testCanGetRating()

@@ -1,6 +1,8 @@
 <?php
 namespace FeedMeNow\Model;
 
+use FeedMeNow\Model\Category;
+
 class Restaurant
 {
     private $id;
@@ -17,7 +19,7 @@ class Restaurant
     private $rating;
     private $latitude;
     private $longitude;
-    private $categories = [];
+    private $categories;
     private $photos = [];
     private $hours = [];
     private $providers = [];
@@ -37,7 +39,7 @@ class Restaurant
         $rating,
         $latitude,
         $longitude,
-        $categories = [],
+        $categories,
         $coordinates = [],
         $photos = [],
         $hours = [],
@@ -57,7 +59,7 @@ class Restaurant
         $this->rating = $rating;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
-        $this->categories = $categories;
+        $this->categories = $this->setCategories($categories);
         $this->photos = $photos;
         $this->hours = $hours;
         $this->providers = $providers;
@@ -82,8 +84,18 @@ class Restaurant
             $data['salesTax'],
             $data['rating'],
             $data['coordinates']['latitude'],
-            $data['coordinates']['longitude']
+            $data['coordinates']['longitude'],
+            $data['categories']
         );
+    }
+
+    private function setCategories(array $categories)
+    {
+        $return = [];
+        foreach ($categories as $category) {
+            $return[] = Category::create($category);
+        }
+        return $return;
     }
 
     public function getId()
