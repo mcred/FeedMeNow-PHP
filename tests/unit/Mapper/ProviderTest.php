@@ -27,7 +27,11 @@ class ProviderMapperTest extends \PHPUnit\Framework\TestCase
                 'review_count' => 11,
                 'price' => '$$',
                 'salesTax' => 0.079,
-                'rating' => 4.5
+                'rating' => 4.5,
+                'coordinates' => [
+                    'latitude' => '33.77719',
+                    'longitude' => '-84.38912'
+                ]
             ],
             [
                 'id' => 'name-2',
@@ -40,7 +44,11 @@ class ProviderMapperTest extends \PHPUnit\Framework\TestCase
                 'display_phone' => 'displayPhone2',
                 'review_count' => 11,
                 'salesTax' => 0.079,
-                'rating' => 4.5
+                'rating' => 4.5,
+                'coordinates' => [
+                    'latitude' => '33.77719',
+                    'longitude' => '-84.38912'
+                ]
             ],
         ]];
         $this->mapper = new ProviderMapper($this->testData);

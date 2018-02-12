@@ -15,8 +15,9 @@ class Restaurant
     private $price;
     private $salesTax;
     private $rating;
+    private $latitude;
+    private $longitude;
     private $categories = [];
-    private $coordinates = [];
     private $photos = [];
     private $hours = [];
     private $transactions = [];
@@ -35,6 +36,8 @@ class Restaurant
         $price,
         $salesTax,
         $rating,
+        $latitude,
+        $longitude,
         $categories = [],
         $coordinates = [],
         $photos = [],
@@ -54,8 +57,9 @@ class Restaurant
         $this->price = $price;
         $this->salesTax = $salesTax;
         $this->rating = $rating;
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
         $this->categories = $categories;
-        $this->coordinates = $coordinates;
         $this->photos = $photos;
         $this->hours = $hours;
         $this->transactions = $transactions;
@@ -79,7 +83,9 @@ class Restaurant
             $data['review_count'],
             $data['price'],
             $data['salesTax'],
-            $data['rating']
+            $data['rating'],
+            $data['coordinates']['latitude'],
+            $data['coordinates']['longitude']
         );
     }
 
@@ -148,9 +154,14 @@ class Restaurant
         return $this->rating;
     }
 
-    public function getCoordinates()
+    public function getLatitude()
     {
-        return $this->coordinates;
+        return $this->latitude;
+    }
+
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 
     public function getPhotos()

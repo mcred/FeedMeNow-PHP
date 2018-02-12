@@ -25,7 +25,11 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
             'review_count' => 11,
             'price' => '$$',
             'salesTax' => 0.079,
-            'rating' => 4.5
+            'rating' => 4.5,
+            'coordinates' => [
+                'latitude' => '33.77719',
+                'longitude' => '-84.38912'
+            ]
         ];
         $this->restaurant = new Restaurant(
             $this->testRestaurant['id'],
@@ -39,7 +43,9 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
             $this->testRestaurant['review_count'],
             $this->testRestaurant['price'],
             $this->testRestaurant['salesTax'],
-            $this->testRestaurant['rating']
+            $this->testRestaurant['rating'],
+            $this->testRestaurant['coordinates']['latitude'],
+            $this->testRestaurant['coordinates']['longitude']
         );
     }
 
@@ -120,9 +126,14 @@ class RestaurantTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('4.5', $this->restaurant->getRating());
     }
 
-    public function testCanGetCoordinates()
+    public function testCanGetLatitude()
     {
-        $this->assertEquals([], $this->restaurant->getCoordinates());
+        $this->assertEquals('33.77719', $this->restaurant->getLatitude());
+    }
+
+    public function testCanGetLongitude()
+    {
+        $this->assertEquals('-84.38912', $this->restaurant->getLongitude());
     }
 
     public function testCanGetPhotos()
