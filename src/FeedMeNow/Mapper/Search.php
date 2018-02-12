@@ -1,7 +1,9 @@
 <?php
-namespace FeedMeNow\Model\Provider;
+namespace FeedMeNow\Mapper;
 
-class GetResponse
+use FeedMeNow\Model\Search;
+
+class SearchMapper
 {
     private $data;
 
@@ -13,8 +15,8 @@ class GetResponse
     public static function create(array $data)
     {
         $return = [];
-        foreach ($data['results'] as $item) {
-            $return[] = Provider::create($item);
+        foreach ($data as $item) {
+            $return[] = new Search($item);
         }
         return new self($return);
     }

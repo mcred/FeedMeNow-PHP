@@ -31,7 +31,8 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
 
         $response = $this->prophet->prophesize("GuzzleHttp\Psr7\Response");
         $stream = $this->prophet->prophesize("GuzzleHttp\Psr7\Stream");
-        $jsonString = '{"missingProviders":[],"results":[{"id":"id","name":"name","price":"price","rating":"rating","phone":"phone","url":"url"},{"id":"id","name":"name","price":"price","rating":"rating","phone":"phone","url":"url"}]}';
+        $restaurantMock = new \FeedMeNow\Mock\Restaurant;
+        $jsonString = '{"missingProviders":[],"results":['.json_encode($restaurantMock->testRestaurant).','.json_encode($restaurantMock->testRestaurant).']}';
         $stream->__toString()->willReturn($jsonString);
         $response->getBody()->willReturn($stream->reveal());
         $this->httpClient->sendRequest(Argument::any())->willReturn($response->reveal());
@@ -48,6 +49,6 @@ class ProviderTest extends \PHPUnit\Framework\TestCase
     {
         $address = "Atlanta, GA";
         $response = $this->provider->get($address);
-        $this->assertInstanceOf("FeedMeNow\Model\Provider\GetResponse", $response);
+        $this->assertInstanceOf("FeedMeNow\Mapper\ProviderMapper", $response);
     }
 }
